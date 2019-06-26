@@ -1,0 +1,27 @@
+[
+  {
+    "Classification": "spark-env",
+    "Configurations": [
+      {
+        "Classification": "export",
+        "Properties": {
+          "PYSPARK_PYTHON": "/home/hadoop/miniconda/bin/python3",
+          "PYSPARK_DRIVER_PYTHON": "/home/hadoop/miniconda/bin/python3"
+        },
+        "Configurations": []
+      }
+    ]
+  },
+  {
+    "Classification": "spark-defaults",
+    "Properties": {
+      "spark.sql.execution.arrow.enabled": "true"
+    }
+  },
+  {
+    "Classification": "spark",
+    "Properties": {
+      "maximizeResourceAllocation": "true"
+    }
+  }
+]
