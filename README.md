@@ -22,7 +22,9 @@ Both files are included here for reference.
 	* Hadoop 2.8.5 
 	* Spark 2.4.2
 * In the **_Edit software settings_** section, click on **_Load JSON from S3_**, and enter the following location in the box: `s3://bigdatateaching/bootstrap/cluster-config.json`
+
 <img src='images/2-edit-software-settings-load-json-from-s3.png'>
+
 * Click Next
 
 ### Step 2: Hardware
@@ -34,19 +36,23 @@ Both files are included here for reference.
 ### Step 3: General Cluster Settings
 
 * Give your cluster a name that is meaningful to you.
-* Towards the bottom of the screen, click on the triangle next to **_Bootstrap Actions_** to expand the section
-* 
+* Towards the bottom of the screen, click on the triangle next to **_Bootstrap Actions_** to expand the section:
+
 <img src='images/3-select-a-bootstrap-action.png'>
+
 * In the **_Add bootstrap action_** dropdown, select **_Custom action_**
  and click on **_Configure and add_**
  
  <img src='images/4-custom-action.png'>
+
 * In the _Add Bootstrap Action_ dialog box, enter the following location in the _Script location_ section: `s3://bigdatateaching/bootstrap/bigdata-bootstrap.sh`
 
  <img src='images/5-add-bootstrap-action.png'>
- * Make sure you see the action added in the screen before you click next
+
+* Make sure you see the action added in the screen before you click next
 
  <img src='images/6-confirmation.png'>
+
 * Click Next
 
 ### Step 4. Security
