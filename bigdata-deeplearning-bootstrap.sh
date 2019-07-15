@@ -205,7 +205,7 @@ jar xf graphframes-0.7.0-spark2.4-s_2.11.jar
 
 echo "Downloading and unpacking spark-dl"
 cd ~
-wget wget http://dl.bintray.com/spark-packages/maven/databricks/spark-deep-learning/1.5.0-spark2.4-s_2.11/spark-deep-learning-1.5.0-spark2.4-s_2.11.jar
+wget http://dl.bintray.com/spark-packages/maven/databricks/spark-deep-learning/1.5.0-spark2.4-s_2.11/spark-deep-learning-1.5.0-spark2.4-s_2.11.jar
 jar xf spark-deep-learning-1.5.0-spark2.4-s_2.11.jar
 
 
