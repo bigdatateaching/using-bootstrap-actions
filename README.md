@@ -17,10 +17,11 @@ Both files are included here for reference.
 ### Step 1: Software and Steps
 
 * Click create cluster and go to  **_Advanced Options_**
-* Select `emr-5.20.0` or higher from the drop-down
-* Click check-boxes for these applications **only**: 
+* Select `emr-5.29.0` from the drop-down
+* Make sure the **only these applications are selected**: 
 	* Hadoop 2.8.5 
-	* Spark 2.4.2
+	* Spark 2.4.4
+	* **Uncheck everything else**
 * In the **_Edit software settings_** section, click on **_Load JSON from S3_**, and enter the following location in the box: `s3://bigdatateaching/bootstrap/cluster-config.json`
 
 <img src='images/2-edit-software-settings-load-json-from-s3.png'>
@@ -30,7 +31,7 @@ Both files are included here for reference.
 ### Step 2: Hardware
 
 * Chose the recommended cluster size for the task. 
-* Use `m4.xlarge` instance types
+* Use `m5.xlarge` or larger instance types
 * Click Next
 
 ### Step 3: General Cluster Settings
