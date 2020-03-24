@@ -36,6 +36,7 @@ conda install \
 dask-yarn>=0.7.0 \
 pyarrow \
 s3fs \
+bokeh \
 conda-pack \
 tornado=5
 
@@ -118,8 +119,10 @@ nltk \
 scipy \
 beautifulsoup4 \
 nose \
-bokeh \
-lxml
+lxml \
+hdf5 \
+seaborn \
+
 
 
 
