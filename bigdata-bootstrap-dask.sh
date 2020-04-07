@@ -122,7 +122,9 @@ nose \
 lxml \
 hdf5 \
 seaborn \
+pyspark
 
+conda install -c johnsnowlabs -y spark-nlp=2.4.5
 
 
 
