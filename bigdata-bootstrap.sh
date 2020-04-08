@@ -16,7 +16,7 @@ fi
 # 1. Install Miniconda on master and server and add to path
 # -----------------------------------------------------------------------------
 echo "Installing Miniconda"
-curl https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh
 bash /tmp/miniconda.sh -b -p $HOME/miniconda
 rm /tmp/miniconda.sh
 echo -e '\nexport PATH=$HOME/miniconda/bin:$PATH' >> $HOME/.bashrc
@@ -33,17 +33,12 @@ conda install \
 -c defaults \
 -c conda-forge \
 -y \
-python=3.6 \
-dask-yarn>=0.4.1 \
+dask-yarn>=0.7.0 \
 pyarrow \
 s3fs \
-nomkl \
+bokeh \
 conda-pack \
-nltk \
-scipy \
-beautifulsoup4 \
-nose \
-lxml
+tornado=5
 
 
 
@@ -72,7 +67,7 @@ fi
 # ------------------------------------------------------------------------------
 if [ "$IS_MASTER" = true ]; then
 
-	
+
 # -----------------------------------------------------------------------------
 # 5. Package the environment to be distributed to worker nodes
 # -----------------------------------------------------------------------------
@@ -89,6 +84,7 @@ distributed:
 
 yarn:
   environment: /home/hadoop/environment.tar.gz
+  deploy-mode: local
 
   worker:
     env:
@@ -112,14 +108,24 @@ conda install \
 -c defaults \
 -c conda-forge \
 -y \
-python=3.6 \
 notebook \
 ipywidgets \
-nbserverproxy \
+jupyter-server-proxy \
 findspark \
 matplotlib \
 jupyterlab \
-scikit-learn
+scikit-learn \
+nltk \
+scipy \
+beautifulsoup4 \
+nose \
+lxml \
+hdf5 \
+seaborn \
+pyspark
+
+conda install -c johnsnowlabs -y spark-nlp=2.4.5
+
 
 
 # -----------------------------------------------------------------------------
@@ -176,7 +182,7 @@ echo "Jupyter session. There is not need to manually run a script.        ";
 echo "                                                                    ";
 echo "To access Jupyter make sure you connect to the cluster with port    ";
 echo "forwarding, and ssh-agent if necessary. If you did not, type exit   ";
-echo "to log out and then log back in:                                    "; 
+echo "to log out and then log back in:                                    ";
 echo "                                                                    ";
 echo "ssh -A -L8765:localhost:8765 hadoop@...                             ";
 echo "and then open a web browser on your laptop and go to                ";
@@ -186,14 +192,14 @@ echo "Remember to configure your git settings (every time you create a    ";
 echo "cluster. You only need to do this once.                             ";
 echo "                                                                    ";
 echo "git config --global user.name \"[[your name]]\"                       ";
-echo "git config --global user.email [[your email]]                       ";
+echo "git config --global user.email \"[[your email]]\"                       ";
 echo "                                                                    ";
 echo "Have fun!                                                           ";
 echo "--------------------------------------------------------------------";
 END
 
 # -----------------------------------------------------------------------------
-# 12. Download and unpack graphframes jar 
+# 12. Download and unpack graphframes jar
 # -----------------------------------------------------------------------------
 echo "Downloading and unpacking graphframes"
 cd ~
@@ -207,4 +213,3 @@ elapsed="$(bc <<<"scale=2;($end_time-$start_time)/60")"
 echo "Bootstrap took $elapsed minutes"
 
 
- 
