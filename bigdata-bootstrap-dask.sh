@@ -16,7 +16,7 @@ fi
 # 1. Install Miniconda on master and server and add to path
 # -----------------------------------------------------------------------------
 echo "Installing Miniconda"
-curl https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh
 bash /tmp/miniconda.sh -b -p $HOME/miniconda
 rm /tmp/miniconda.sh
 echo -e '\nexport PATH=$HOME/miniconda/bin:$PATH' >> $HOME/.bashrc
