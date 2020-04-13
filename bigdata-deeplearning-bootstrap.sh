@@ -16,7 +16,7 @@ fi
 # 1. Install Miniconda on master and server and add to path
 # -----------------------------------------------------------------------------
 echo "Installing Miniconda"
-curl https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh
 bash /tmp/miniconda.sh -b -p $HOME/miniconda
 rm /tmp/miniconda.sh
 echo -e '\nexport PATH=$HOME/miniconda/bin:$PATH' >> $HOME/.bashrc
@@ -33,19 +33,15 @@ conda install \
 -c defaults \
 -c conda-forge \
 -y \
-python=3.6 \
-dask-yarn>=0.4.1 \
+dask-yarn>=0.7.0 \
 pyarrow \
 s3fs \
-nomkl \
+bokeh \
 conda-pack \
-nltk \
-scipy \
-beautifulsoup4 \
-nose \
-lxml \
+tornado=5 \
 tensorflow-mkl \
-keras
+keras \
+pillow
 
 pip install tensorflowonspark
 
@@ -92,6 +88,7 @@ distributed:
 
 yarn:
   environment: /home/hadoop/environment.tar.gz
+  deploy-mode: local
 
   worker:
     env:
@@ -115,14 +112,24 @@ conda install \
 -c defaults \
 -c conda-forge \
 -y \
-python=3.6 \
 notebook \
 ipywidgets \
-nbserverproxy \
+jupyter-server-proxy \
 findspark \
 matplotlib \
 jupyterlab \
-scikit-learn
+scikit-learn \
+nltk \
+scipy \
+beautifulsoup4 \
+nose \
+lxml \
+hdf5 \
+seaborn \
+pyspark
+
+conda install -c johnsnowlabs -y spark-nlp=2.4.5
+
 
 
 # -----------------------------------------------------------------------------
@@ -189,7 +196,7 @@ echo "Remember to configure your git settings (every time you create a    ";
 echo "cluster. You only need to do this once.                             ";
 echo "                                                                    ";
 echo "git config --global user.name \"[[your name]]\"                       ";
-echo "git config --global user.email [[your email]]                       ";
+echo "git config --global user.email \"[[your email]]\"                       ";
 echo "                                                                    ";
 echo "Have fun!                                                           ";
 echo "--------------------------------------------------------------------";
@@ -203,11 +210,11 @@ cd ~
 wget http://dl.bintray.com/spark-packages/maven/graphframes/graphframes/0.7.0-spark2.4-s_2.11/graphframes-0.7.0-spark2.4-s_2.11.jar
 jar xf graphframes-0.7.0-spark2.4-s_2.11.jar
 
+
 echo "Downloading and unpacking spark-dl"
 cd ~
 wget http://dl.bintray.com/spark-packages/maven/databricks/spark-deep-learning/1.5.0-spark2.4-s_2.11/spark-deep-learning-1.5.0-spark2.4-s_2.11.jar
 jar xf spark-deep-learning-1.5.0-spark2.4-s_2.11.jar
-
 
 fi
 
