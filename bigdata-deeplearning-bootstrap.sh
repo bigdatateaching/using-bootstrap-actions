@@ -41,9 +41,10 @@ conda-pack \
 tornado=5 \
 tensorflow-mkl \
 keras \
+elephas \
 pillow
 
-pip install tensorflowonspark
+pip install tensorflowonspark #dist-keras
 
 
 # -----------------------------------------------------------------------------
