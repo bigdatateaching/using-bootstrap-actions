@@ -39,13 +39,11 @@ s3fs \
 bokeh \
 conda-pack \
 tornado=5 \
-tensorflow-mkl \
 keras \
 elephas \
 pillow
 
-pip install tensorflowonspark #dist-keras
-
+pip install tensorflow tensorflowonspark dist-keras
 
 # -----------------------------------------------------------------------------
 # 3. List all packages in the worker nodes
